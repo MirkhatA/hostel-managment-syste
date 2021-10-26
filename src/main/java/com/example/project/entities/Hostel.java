@@ -15,11 +15,6 @@ public class Hostel {
     private int noOfStudents;
     private double roomPrice;
 
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
-            fetch = FetchType.LAZY)
-    @JoinColumn(name = "room_id")
-    private Room room;
-
     public Hostel() {
 
     }
@@ -71,11 +66,5 @@ public class Hostel {
         this.roomPrice = roomPrice;
     }
 
-    public Room getRoom() {
-        return room;
-    }
 
-    public void setRoom(Room room) {
-        this.room = room;
-    }
 }

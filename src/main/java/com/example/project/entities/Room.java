@@ -1,7 +1,6 @@
 package com.example.project.entities;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Room {
@@ -13,9 +12,6 @@ public class Room {
     private int roomNumber;
     private String description;
     private int noOfStudents;
-
-    @OneToMany(mappedBy = "room")
-    private List<Hostel> hostels;
 
     public Room() {
 
@@ -59,11 +55,4 @@ public class Room {
         this.noOfStudents = noOfStudents;
     }
 
-    public List<Hostel> getHostels() {
-        return hostels;
-    }
-
-    public void setHostels(List<Hostel> hostels) {
-        this.hostels = hostels;
-    }
 }

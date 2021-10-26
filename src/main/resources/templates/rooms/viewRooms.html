@@ -27,14 +27,10 @@
         </thead>
 
         <tr th:each="aRoom : ${rooms}">
-            <td th:text="${aRoom.roomNumber}"></td>
             <td th:text="${aRoom.description}"></td>
             <td th:text="${aRoom.noOfStudents}"></td>
+            <td th:text="${aRoom.roomNumber}"></td>
         </tr>
-
-        <select th:field="*{hostels}">
-
-        </select>
     </table>
 </div>
 

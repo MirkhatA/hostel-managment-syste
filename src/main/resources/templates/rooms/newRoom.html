@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header"></head>
+<body>
+
+<nav th:replace="layouts :: navbar"></nav>
+
+<div class="container">
+    <form action="/rooms/save" th:object="${room}" method="POST">
+        <input type="text" placeholder="Enter the room number" th:field="${room.roomNumber}">
+
+        <input type="text" placeholder="Enter the description of this room" th:field="${room.description}">
+
+        <input type="text" placeholder="Enter the number of students that can live in this room" th:field="${room.noOfStudents}">
+
+<!--        <input type="text" placeholder="Enter the price for each room" th:field="${hostel.roomPrice}">-->
+
+        <button type="submit">Create room</button>
+    </form>
+</div>
+
+</body>
+</html>

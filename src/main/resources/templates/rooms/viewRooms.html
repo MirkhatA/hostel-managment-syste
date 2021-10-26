@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header"></head>
+<body>
+
+<nav th:replace="layouts :: navbar"></nav>
+
+<div class="container">
+
+    <br><br>
+
+    <h3>
+       Rooms list
+    </h3>
+
+    <!-- Add new button -->
+    <a th:href="@{/rooms/add}" class="btn btn-primary btn-sm mb-3">Add room</a>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Number</th>
+            <th>Description</th>
+            <th>Number of Students</th>
+        </tr>
+        </thead>
+
+        <tr th:each="aRoom : ${rooms}">
+            <td th:text="${aRoom.roomNumber}"></td>
+            <td th:text="${aRoom.description}"></td>
+            <td th:text="${aRoom.noOfStudents}"></td>
+        </tr>
+
+        <select th:field="*{hostels}">
+
+        </select>
+    </table>
+</div>
+
+</body>
+</html>

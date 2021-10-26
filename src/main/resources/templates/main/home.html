@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header"></head>
+<body>
+
+<nav th:replace="layouts :: navbar"></nav>
+
+<div class="container">
+    <h1>List of hostels</h1>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Rooms</th>
+            <th>Number of Students</th>
+            <th>Price for each room</th>
+        </tr>
+
+        <tr th:each="aHostel : ${hostelList}">
+            <td th:text="${aHostel.name}"></td>
+            <td th:text="${aHostel.noOfRooms}"></td>
+            <td th:text="${aHostel.noOfStudents}"></td>
+            <td th:text="${aHostel.roomPrice}"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

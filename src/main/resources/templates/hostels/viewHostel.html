@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header"></head>
+<body>
+
+<nav th:replace="layouts :: navbar"></nav>
+
+<div class="container">
+
+    <br><br>
+
+    <h3>
+        Hostels list
+    </h3>
+
+    <!-- Add new button -->
+    <a th:href="@{/hostels/add}" class="btn btn-primary btn-sm mb-3">Add hostel</a>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Number of rooms</th>
+            <th>Number of students</th>
+            <th>Room price</th>
+        </tr>
+        </thead>
+
+        <tr th:each="aHostel : ${hostels}">
+            <td th:text="${aHostel.name}"></td>
+            <td th:text="${aHostel.noOfRooms}"></td>
+            <td th:text="${aHostel.noOfStudents}"></td>
+            <td th:text="${aHostel.roomPrice}"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

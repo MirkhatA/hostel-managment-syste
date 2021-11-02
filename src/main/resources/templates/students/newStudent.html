@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header"></head>
+<body>
+
+<nav th:replace="layouts :: navbar"></nav>
+
+<div class="container">
+
+
+    <form action="/students/save" th:object="${student}" method="POST">
+        <input type="hidden" th:field="${student.studentId}">
+
+        <input type="text" placeholder="Enter student first name" th:field="${student.firstName}"><br>
+
+        <input type="text" placeholder="Enter student last name" th:field="${student.lastName}"><br>
+
+        <select th:field="${student.gender}">
+            <option th:value="MALE">Male</option>
+            <option th:value="FEMALE">Female</option>
+        </select><br>
+
+        <select th:field="*{rooms}">
+            <option th:each="room : ${allRooms}"
+                    th:value="${room.roomId}"
+                    th:text="${room.roomNumber}">
+
+            </option>
+        </select><br>
+
+        <button type="submit">Create student</button>
+    </form>
+</div>
+
+</body>
+</html>

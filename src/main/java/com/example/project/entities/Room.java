@@ -14,13 +14,17 @@ public class Room {
     private String description;
     private int noOfStudents;
 
-    @ManyToMany     (cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
             fetch = FetchType.LAZY)
     @JoinTable(name = "student_room",
             joinColumns = @JoinColumn(name = "room_id"),
             inverseJoinColumns = @JoinColumn(name = "student_id")
     )
     private List<Student> students;
+
+    @ManyToOne
+    @JoinColumn(name = "hostel_id", nullable = false)
+    private Hostel hostel;
 
     public Room() {
 
@@ -70,5 +74,13 @@ public class Room {
 
     public void setStudents(List<Student> students) {
         this.students = students;
+    }
+
+    public Hostel getHostel() {
+        return hostel;
+    }
+
+    public void setHostel(Hostel hostel) {
+        this.hostel = hostel;
     }
 }

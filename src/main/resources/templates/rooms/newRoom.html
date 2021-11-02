@@ -18,6 +18,14 @@
         <label>Number of students</label><br>
         <input type="text" placeholder="Enter the number of students that can live in this room" th:field="${room.noOfStudents}"><br>
 
+        <select th:field="*{hostel}">
+            <option th:each="hostel : ${allHostels}"
+                    th:value="${hostel.hostelId}"
+                    th:text="${hostel.name}">
+
+            </option>
+        </select><br>
+
         <button type="submit">Create room</button>
     </form>
 </div>

@@ -4,6 +4,7 @@ import com.example.project.dataObject.HostelRepository;
 import com.example.project.dataObject.RoomRepository;
 import com.example.project.entities.Hostel;
 import com.example.project.entities.Room;
+import com.example.project.entities.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,9 @@ public class RoomController {
     @Autowired
     RoomRepository roomRepository;
 
+    @Autowired
+    HostelRepository hostelRepository;
+
     @GetMapping
     public String displayRoom(Model model) {
         List<Room> rooms = roomRepository.findAll();
@@ -29,11 +33,14 @@ public class RoomController {
         return "rooms/viewRooms";
     }
 
+
+
     @GetMapping("/add")
     public String viewRoomForm(Model model) {
         Room aRoom = new Room();
-
+        List<Hostel> hostels = hostelRepository.findAll();
         model.addAttribute("room", aRoom);
+        model.addAttribute("allHostels", hostels);
 
         return "rooms/newRoom";
     }

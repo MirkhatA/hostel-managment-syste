@@ -8,11 +8,15 @@
 
 <div class="container">
     <form action="/rooms/save" th:object="${room}" method="POST">
-        <input type="text" placeholder="Enter the room number" th:field="${room.roomNumber}">
 
-        <input type="text" placeholder="Enter the description of this room" th:field="${room.description}">
+        <label>Room number</label><br>
+        <input type="text" placeholder="Enter the room number" th:field="${room.roomNumber}"><br>
 
-        <input type="text" placeholder="Enter the number of students that can live in this room" th:field="${room.noOfStudents}">
+        <label>Room description</label><br>
+        <input type="text" placeholder="Enter the description of this room" th:field="${room.description}"><br>
+
+        <label>Number of students</label><br>
+        <input type="text" placeholder="Enter the number of students that can live in this room" th:field="${room.noOfStudents}"><br>
 
         <button type="submit">Create room</button>
     </form>

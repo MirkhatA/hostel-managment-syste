@@ -1,6 +1,7 @@
 package com.example.project.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Room {
@@ -12,6 +13,14 @@ public class Room {
     private int roomNumber;
     private String description;
     private int noOfStudents;
+
+    @ManyToMany     (cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
+            fetch = FetchType.LAZY)
+    @JoinTable(name = "student_room",
+            joinColumns = @JoinColumn(name = "room_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id")
+    )
+    private List<Student> students;
 
     public Room() {
 
@@ -55,4 +64,11 @@ public class Room {
         this.noOfStudents = noOfStudents;
     }
 
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
 }

@@ -23,14 +23,29 @@
             <th>Number</th>
             <th>Description</th>
             <th>Number of Students</th>
+            <th>Actions</th>
         </tr>
         </thead>
 
         <tr th:each="aRoom : ${rooms}">
+            <td th:text="${aRoom.roomNumber}"></td>
             <td th:text="${aRoom.description}"></td>
             <td th:text="${aRoom.noOfStudents}"></td>
-            <td th:text="${aRoom.roomNumber}"></td>
+
+            <td>
+                <a th:href="@{/rooms/update(id=${aRoom.roomId})}"
+                   class="btn btn-info btn-sm">
+                    Update
+                </a>
+
+                <a th:href="@{/rooms/delete(id=${aRoom.roomId})}"
+                   class="btn btn-danger btn-sm"
+                   onclick="if (!(confirm('Are you sure you want to delete this room?'))) return false">
+                    Delete
+                </a>
+            </td>
         </tr>
+
     </table>
 </div>
 
